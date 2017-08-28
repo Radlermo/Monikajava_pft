@@ -1,16 +1,14 @@
 package pl.stqa.pft.sandbox;
 
 public class Point {
-  public static void main(String[] args) {
-    PointP1 p1 = new PointP1(2,5);
+  double x;
+  double y;
 
-    PointP2 p2 = new PointP2(5,9);
-
-
-    System.out.println("Odległość między punktami A=(2,5) i B=(5,9) wynosi " + Math.sqrt(((p1.x2 - p1.x1) * (p1.x2 - p1.x1)) + (p2.y2 - p2.y1) * (p2.y2 - p2.y1)));
-
+  public Point (double x, double y) {
+    this.x = x;
+    this.y = y;
   }
-  
- }
-
-
+  public double distance(Point p) {
+    return Math.sqrt((x - p.x)*(x - p.x) + (y - p.y)*(y - p.y));
+  }
+}
