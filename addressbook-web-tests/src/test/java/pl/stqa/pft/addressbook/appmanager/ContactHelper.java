@@ -34,4 +34,18 @@ public class ContactHelper extends HelperBase{
   public void goToHomePage() {
     click(By.xpath("//div[@id='content']/form/input[21]"));
   }
+
+  public void selectContact() {
+    click(By.id("6"));
+  }
+
+  public void initContactModification() {
+    click(By.xpath("//table[@id='maintable']/tbody/tr[2]/td[8]/a/img"));
+  }
+
+  public void submitContactModification() {
+    click(By.xpath("//div[@id='content']/form[1]/input[22]"));
+  }
+
+
 }
