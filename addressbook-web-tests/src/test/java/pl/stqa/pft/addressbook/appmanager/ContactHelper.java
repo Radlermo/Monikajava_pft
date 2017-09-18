@@ -44,6 +44,7 @@ public class ContactHelper extends HelperBase{
 
   public void goToHomePage() {
     click(By.xpath("//div[@id='content']/form/input[21]"));
+
   }
 
   public void selectContact() {
@@ -67,5 +68,15 @@ public class ContactHelper extends HelperBase{
 
   public void alertAccept() {
     wd.switchTo().alert().accept();
+  }
+
+  public void createContact(ContactData contactData, boolean creation) {
+    goToContactCreation();
+    fillContactForm(contactData, true);
+    goToHomePage();
+  }
+
+  public boolean isThereAContact() {
+    return isElementPresent(By.name("selected[]"));
   }
 }
