@@ -6,8 +6,8 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 import pl.stqa.pft.addressbook.model.ContactData;
+import org.openqa.selenium.NoSuchElementException;
 
-import java.util.NoSuchElementException;
 
 public class ContactHelper extends HelperBase{
 
@@ -44,6 +44,7 @@ public class ContactHelper extends HelperBase{
 
   public void goToHomePage() {
     click(By.xpath("//div[@id='content']/form/input[21]"));
+    /*click(By.linkText("home page")); */
 
   }
 
@@ -70,9 +71,9 @@ public class ContactHelper extends HelperBase{
     wd.switchTo().alert().accept();
   }
 
-  public void createContact(ContactData contactData, boolean creation) {
+  public void createContact(ContactData contact, boolean creation) {
     goToContactCreation();
-    fillContactForm(contactData, true);
+    fillContactForm(contact, true);
     goToHomePage();
   }
 
