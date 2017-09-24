@@ -16,23 +16,26 @@ public class Collections {
     langs[3] = "PHP";  */
 
     String[] langs = {"Java","C#","Python", "PHP"};
-    /*pierwsza wersja lista*/
-    List<String> languages = new ArrayList<String>(); /*lista*/
+    /*pierwsza wersja lista
+
+    List<String> languages = new ArrayList<String>(); /*lista
     languages.add("Java");
     languages.add("C#");
     languages.add("Python");
-    languages.add("PHP");
+    languages.add("PHP");*/
 
-     /*druga wersja lista*/
+     /*druga wersja lista
     List<String> languages2 = Arrays.asList("Java","C#","Python", "PHP");
+
     for(int i=0; i < languages2.size(); i++)
-      System.out.println("Chcę nauczyć się " + );
+      System.out.println("Chcę nauczyć się " + languages.get(i));*/
 
-    /*kolekcja*/
+    List<String> languages = Arrays.asList("Java","C#","Python", "PHP");
+
+    /*kolekcja pierwsza wersja
     for (int i=0; i < langs.length; i++) {
-      System.out.println("Chcę nauczyć się " + langs[i]); /*langs[i] - łańcuch */
-
-    }
+      System.out.println("Chcę nauczyć się " + langs[i]); /*langs[i] - łańcuch
+    }*/
     /*inna forma kolekcji*/
     for(String l : langs) {
       System.out.println("Chcę nauczyć się " + l);
