@@ -6,8 +6,6 @@ public class GroupData {
   private final String header;
   private final String footer;
 
-
-
   @Override
   public int hashCode() {
     return name != null ? name.hashCode() : 0;

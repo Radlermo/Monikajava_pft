@@ -28,7 +28,7 @@ public class GroupCreationTest extends TestBase {
     }*/
 
     /*porównanie za pomocą comparatora anonimowa funkcja*/
-   
+
     before.add(group);
     Comparator<? super GroupData> byId = (g1, g2) -> Integer.compare(g1.getId(),g2.getId());
     before.sort(byId);
