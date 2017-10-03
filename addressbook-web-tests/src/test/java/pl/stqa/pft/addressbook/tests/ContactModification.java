@@ -18,8 +18,10 @@ public class ContactModification extends TestBase {
     List<ContactData> before = app.getContactHelper().getContactList();
     app.getContactHelper().selectContact(before.size() -1);
     app.getContactHelper().initContactModification();
-    ContactData contact = new ContactData("Monika2", "Radler5", "654589697", "twst@test.pl", "test3"), false);
-    app.getContactHelper().fillContactForm(contact, (boolean creation));
+    /*ContactData contact = new ContactData("Monika2", "Radler5", "654589697", "twst@test.pl","test3");*/
+    ContactData contact = new ContactData(before.get(before.size() -1).getId(),"Monika2", "Radler5", "654589697", "twst@test.pl","test3");
+    app.getContactHelper().fillContactForm(contact, false);
+    /*app.getContactHelper().fillContactForm(new ContactData("Monika2", "Radler5", "654589697", "twst@test.pl","test3"), false); */
     app.getContactHelper().submitContactModification();
     List<ContactData> after = app.getContactHelper().getContactList();
     Assert.assertEquals(after.size(), before.size());
