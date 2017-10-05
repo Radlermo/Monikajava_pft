@@ -92,10 +92,10 @@ public class ContactHelper extends HelperBase{
 
   public List<ContactData> getContactList() {
     List<ContactData> contacts = new ArrayList<ContactData>();
-    List<WebElement> elements = wd.findElements(By.name("selected[]"));
+    List<WebElement> elements = wd.findElements(By.cssSelector("form.table#maintable.sortcompletecallback-applyZebra"));
     for (WebElement element : elements) {
       String name = element.getText();
-      String id = element.findElement(By.tagName("input id")).getAttribute("value");
+      String id = element.findElement(By.tagName("input")).getAttribute("value");
       ContactData contact = new ContactData(id, name, null, null, null, null);
       contacts.add(contact);
     }
