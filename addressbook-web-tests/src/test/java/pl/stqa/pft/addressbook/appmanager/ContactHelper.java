@@ -54,13 +54,26 @@ public class ContactHelper extends HelperBase{
 
   public void selectContact(int index) {
     wd.findElements(By.name("selected[]")).get(index).click();
+
     /*click(By.name("selected[]")); */
     /*click(By.id("6")); */
+
   }
 
-
+  /*you click the checkbox by index. but it does not matter what checkbox is selected.
+  to open proper modification form you have to click proper Edit button
+  that means, initContactModification should accept index as a parameter,
+  and you should use this parameter value to find Edit button in the row with the given index*/
   public void initContactModification() {
+    wd.findElement(By.xpath("//table[@id='maintable']/tbody/tr[3]/td[8]/a/img")).click();
+   /*click(By.xpath("//table[@id='maintable']/tbody/tr/td/a/img"));*/
+    /*click(By.xpath("//div[@id='footer']//li[.='php-addressbook v8.2.5']"));
     click(By.xpath("//table[@id='maintable']/tbody/tr[2]/td[8]/a/img"));
+    if (!wd.findElement(By.id("38")).isSelected()) {
+      wd.findElement(By.id("38")).click();
+    }
+    wd.findElement(By.xpath("//table[@id='maintable']/tbody/tr[3]/td[8]/a/img")).click();*/
+
   }
 
   public void submitContactModification() {
