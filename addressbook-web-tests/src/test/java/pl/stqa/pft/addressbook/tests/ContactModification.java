@@ -16,18 +16,18 @@ public class ContactModification extends TestBase {
       app.getContactHelper().createContact(new ContactData("Monika1", "Radler1", "654589698", "twst@test.pl", "test2"),true);
     }
     List<ContactData> before = app.getContactHelper().getContactList();
-    app.getContactHelper().selectContact(before.size()- 1);
-    app.getContactHelper().initContactModification();
+    app.getContactHelper().selectContact(before.size()-1);
+    app.getContactHelper().initContactModification(before.size()-1);
     /*ContactData contact = new ContactData("Monika2", "Radler5", "654589697", "twst@test.pl","test3");*/
-    ContactData contact = new ContactData(null,"Monika2", "Radler5", "654589697", "twst@test.pl","test3");
+    ContactData contact = new ContactData(before.get(before.size()-1).getId(),"Monika2", "Radler5", "654589697", "twst@test.pl","test3");
     app.getContactHelper().fillContactForm(contact, false);
     /*app.getContactHelper().fillContactForm(new ContactData("Monika2", "Radler5", "654589697", "twst@test.pl","test3"), false); */
     app.getContactHelper().submitContactModification();
-    List<ContactData> after = app.getContactHelper().getContactList();
+   List<ContactData> after = app.getContactHelper().getContactList();
     Assert.assertEquals(after.size(), before.size());
 
     before.remove(before.size()- 1);
     before.add(contact);
-    Assert.assertEquals(new HashSet<Object>(before) , new HashSet<Object>(after));
+    Assert.assertEquals(new HashSet<Object>(before.size()) , new HashSet<Object>(after.size())); /* zbiory*/
   }
 }

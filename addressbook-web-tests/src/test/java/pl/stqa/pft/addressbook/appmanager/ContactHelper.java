@@ -15,6 +15,8 @@ import java.util.List;
 
 public class ContactHelper extends HelperBase{
 
+  private int id;
+
   public ContactHelper(WebDriver wd) {
     super (wd);
   }
@@ -53,19 +55,29 @@ public class ContactHelper extends HelperBase{
   }
 
   public void selectContact(int index) {
-    wd.findElements(By.name("selected[]")).get(index).click();
+     wd.findElements(By.name("selected[]")).get(index).click();
 
     /*click(By.name("selected[]")); */
     /*click(By.id("6")); */
+         }
 
-  }
+    /*public void selectContactById(int id) {
+      /*wd.findElement(By.cssSelector("input[id='%s']")).click();*/
+      /*wd.findElement(By.xpath("//table[@id='maintable']/tbody/tr/td.center")).click()
+      wd.findElement(By.cssSelector(String.format("//input[value='%s']", id))).click();   } */
+
 
   /*you click the checkbox by index. but it does not matter what checkbox is selected.
   to open proper modification form you have to click proper Edit button
   that means, initContactModification should accept index as a parameter,
   and you should use this parameter value to find Edit button in the row with the given index*/
-  public void initContactModification() {
-    wd.findElement(By.xpath("//table[@id='maintable']/tbody/tr[3]/td[8]/a/img")).click();
+   public void initContactModification(int index) {
+   /*wd.findElement(By.xpath(String.format("//input[@id=' ']/../..//img[@title='Edit']", index ))).click();*/
+     wd.findElement(By.xpath("//table[@id='maintable']/tbody/tr["+index+"]/td[8]/a/img")).click();
+    /*wd.findElement(By.cssSelector(String.format("a[href='edit.php?id=%s']", index))).click();*/
+    /*wd.findElement(By.xpath("//table[@id='maintable']/tbody/tr[3]/td[8]/a/img")).getAttribute(By.id("38")).click();
+    /* */
+   /* wd.findElement(By.xpath(String.format("//input[@id='%s']/../..//img[@title='Edit']", selectContactByid())).click();/*
    /*click(By.xpath("//table[@id='maintable']/tbody/tr/td/a/img"));*/
     /*click(By.xpath("//div[@id='footer']//li[.='php-addressbook v8.2.5']"));
     click(By.xpath("//table[@id='maintable']/tbody/tr[2]/td[8]/a/img"));
@@ -103,15 +115,16 @@ public class ContactHelper extends HelperBase{
     return wd.findElements(By.name("selected[]")).size();
   }
 
-  public List<ContactData> getContactList() {
+ public List<ContactData> getContactList() {
     List<ContactData> contacts = new ArrayList<ContactData>();
-    List<WebElement> elements = wd.findElements(By.cssSelector("form.table#maintable.sortcompletecallback-applyZebra"));
+    List<WebElement> elements = wd.findElements(By.name("entry"));
     for (WebElement element : elements) {
       String name = element.getText();
-      String id = element.findElement(By.tagName("input")).getAttribute("value");
-      ContactData contact = new ContactData(id, name, null, null, null, null);
+      String id = element.findElement(By.cssSelector("td.center")).getAttribute("input id");
+      ContactData contact = new ContactData(id, null, null, null, null, null);
       contacts.add(contact);
     }
+
 
     return contacts;
   }
