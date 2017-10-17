@@ -19,7 +19,7 @@ public class ContactModification extends TestBase {
     app.getContactHelper().selectContact(before.size()-1);
     app.getContactHelper().initContactModification(before.size()-1);
     /*ContactData contact = new ContactData("Monika2", "Radler5", "654589697", "twst@test.pl","test3");*/
-    ContactData contact = new ContactData(before.get(before.size()-1).getId(),"Monika2", "Radler5", "654589697", "twst@test.pl","test3");
+    ContactData contact = new ContactData(before.get(before.size()-1).getId(),"Monika6", "Radler8", "754589697", "7wst@test.pl","test3");
     app.getContactHelper().fillContactForm(contact, false);
     /*app.getContactHelper().fillContactForm(new ContactData("Monika2", "Radler5", "654589697", "twst@test.pl","test3"), false); */
     app.getContactHelper().submitContactModification();
