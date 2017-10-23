@@ -117,10 +117,17 @@ public class ContactHelper extends HelperBase{
 
  public List<ContactData> getContactList() {
     List<ContactData> contacts = new ArrayList<ContactData>();
+
+    /* List<WebElement> elements = wd.findElements(By)*/
+
     List<WebElement> elements = wd.findElements(By.name("entry"));
     for (WebElement element : elements) {
       String name = element.getText();
-      int id = Integer.parseInt(element.findElement(By.cssSelector("td.center")).getAttribute("value"));
+     /* int id = Integer.parseInt(element.findElement(By.tagName("input")).getAttribute("value"));*/
+      /*int id = Integer.parseInt(elements.get(0).findElements(By.tagName("TD")).get(1).getText());*/
+     /*int id = Integer.parseInt(elements.get(0).findElements(By.tagName("td")).get(0).findElement(By.tagName("input")).getAttribute("id"));*/
+      int id = Integer.parseInt(element.findElements(By.tagName("td")).get(0).findElement(By.tagName("input")).getAttribute("id"));
+
       ContactData contact = new ContactData(id, null, null, null, null, null);
       contacts.add(contact);
     }
