@@ -5,27 +5,25 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import pl.stqa.pft.addressbook.model.GroupData;
 
-import java.util.Collections;
 import java.util.Comparator;
-import java.util.HashSet;
 import java.util.List;
 
 public class GroupModificationTests extends TestBase {
   @BeforeMethod
   public void ensurePreconditions() {
-  app.getNavigationHelper().gotoGroupPage();
-    if(! app.getGroupHelper().isThereAGroup()){
-    app.getGroupHelper().createGroup (new GroupData("test", null, null));
+  app.goTo().groupPage();
+    if(app.group().list().size() == 0){
+    app.group().create(new GroupData("test", null, null));
   } /*jeśli nie ma grupy do usunięcia to ją stwórz*/
 }
 
   @Test
   public void testGroupModification() {
-    List<GroupData> before = app.getGroupHelper().getGroupList();/*rozmiar list przed*/
+    List<GroupData> before = app.group().list();/*rozmiar list przed*/
     int index = before.size() - 1;
     GroupData group = new GroupData(before.get(index).getId(), "test1", "test2", "test3");
-    app.getGroupHelper().modifyGroup(index, group);
-    List<GroupData> after = app.getGroupHelper().getGroupList();/*rozmiar list po*/
+    app.group().modify(index, group);
+    List<GroupData> after = app.group().list();/*rozmiar list po*/
     Assert.assertEquals(after.size(), before.size()); /*porównanie rozmiaru list*/
 
     before.remove(index);
