@@ -10,7 +10,7 @@ import java.util.List;
 
 public class ContactModification extends TestBase {
 
-  @Test(enabled = false)
+  @Test
   public void testContactModification() {
 
     if (! app.getContactHelper().isThereAContact()){
@@ -19,8 +19,8 @@ public class ContactModification extends TestBase {
     List<ContactData> before = app.getContactHelper().getContactList();
     app.getContactHelper().selectContact(before.size()-1);
     app.getContactHelper().initContactModification(before.size()-1);
-    ContactData contact = new ContactData(before.get(before.size()-1).getId(),"Monika6", "Radler8", "754589697", "7wst@test.pl","test3");
-    app.getContactHelper().fillContactForm(contact, false);
+    ContactData contact = new ContactData(before.get(before.size()-1).getId(), "Monika6", "Radler8","754589697", "7wst@test.pl","test3");
+        app.getContactHelper().fillContactForm(contact, false);
     /*app.getContactHelper().fillContactForm(new ContactData("Monika2", "Radler5", "654589697", "twst@test.pl","test3"), false); */
     app.getContactHelper().submitContactModification();
     List<ContactData> after = app.getContactHelper().getContactList();

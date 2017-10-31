@@ -6,10 +6,6 @@ public class GroupData {
   private final String header;
   private final String footer;
 
-  @Override
-  public int hashCode() {
-    return name != null ? name.hashCode() : 0;
-  }
 
   public GroupData(String name, String header, String footer) {
     this.id = Integer.MAX_VALUE;
@@ -59,5 +55,10 @@ public class GroupData {
     GroupData groupData = (GroupData) o;
 
     return name != null ? name.equals(groupData.name) : groupData.name == null;
+  }
+
+  @Override
+  public int hashCode() {
+    return name != null ? name.hashCode() : 0;
   }
 }

@@ -2,8 +2,8 @@ package pl.stqa.pft.addressbook.model;
 
 public class ContactData {
   private int id;
-  private final String firstname;
-  private final String lastname;
+  private String firstname;
+  private String lastname;
   private final String telephonehome;
   private final String email;
   private String group;
@@ -55,15 +55,6 @@ public class ContactData {
   }
 
   @Override
-  public String toString() {
-    return "ContactData{" +
-            "id='" + id + '\'' +
-            ", firstname='" + firstname + '\'' +
-            ", lastname='" + lastname + '\'' +
-            '}';
-  }
-
-  @Override
   public boolean equals(Object o) {
     if (this == o) return true;
     if (o == null || getClass() != o.getClass()) return false;
@@ -82,4 +73,14 @@ public class ContactData {
     result = 31 * result + (lastname != null ? lastname.hashCode() : 0);
     return result;
   }
+
+  @Override
+  public String toString() {
+    return "ContactData{" +
+            "id=" + id +
+            ", firstname='" + firstname + '\'' +
+            ", lastname='" + lastname + '\'' +
+            '}';
+  }
+
 }
