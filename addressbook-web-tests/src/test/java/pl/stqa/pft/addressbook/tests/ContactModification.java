@@ -3,6 +3,7 @@ package pl.stqa.pft.addressbook.tests;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import pl.stqa.pft.addressbook.model.ContactData;
+import pl.stqa.pft.addressbook.model.GroupData;
 
 import java.util.Comparator;
 import java.util.HashSet;
@@ -14,12 +15,12 @@ public class ContactModification extends TestBase {
   public void testContactModification() {
 
     if (! app.getContactHelper().isThereAContact()){
-      app.getContactHelper().createContact(new ContactData("Monika1", "Radler1", "654589698", "twst@test.pl", "test2"),true);
+      app.getContactHelper().createContact(new ContactData("Monika1", "Radler1", "testowa4","654589698", "twst@test.pl", "test2"),true);
     }
     List<ContactData> before = app.getContactHelper().getContactList();
     app.getContactHelper().selectContact(before.size()-1);
     app.getContactHelper().initContactModification(before.size()-1);
-    ContactData contact = new ContactData(before.get(before.size()-1).getId(), "Monika6", "Radler8","754589697", "7wst@test.pl","test3");
+    ContactData contact = new ContactData(before.get(before.size()-1).getId(), "Monika6", "Radler8", "testowa4", "754589697", "7wst@test.pl","test3");
         app.getContactHelper().fillContactForm(contact, false);
     /*app.getContactHelper().fillContactForm(new ContactData("Monika2", "Radler5", "654589697", "twst@test.pl","test3"), false); */
     app.getContactHelper().submitContactModification();

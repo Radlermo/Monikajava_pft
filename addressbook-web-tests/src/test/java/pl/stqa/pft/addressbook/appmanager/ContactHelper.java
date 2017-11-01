@@ -55,6 +55,18 @@ public class ContactHelper extends HelperBase{
   }
 
   public void selectContact(int index) {
+   index += 2;
+   click(By.xpath("html/body/div/div[4]/form[2]/table/tbody/tr[" + index + "]/td[1]/input"));
+     }
+
+
+  public void initContactModification(int index) {
+    index += 2;
+    click(By.xpath("html/body/div/div[4]/form[2]/table/tbody/tr[" + index + "]/td[8]/a/img"));
+
+
+
+ /* public void selectContact(int index) {
      wd.findElements(By.name("selected[]")).get(index).click();
 
     /*click(By.name("selected[]")); */
@@ -62,10 +74,12 @@ public class ContactHelper extends HelperBase{
 }
 
 
-   public void initContactModification(int index) {
+   /*public void initContactModification(int index) {
    /*wd.findElement(By.xpath(String.format("//input[@id=' ']/../..//img[@title='Edit']", index ))).click();*/
-     wd.findElement(By.xpath("//table[@id='maintable']/tbody/tr["+index+"]/td[8]/a/img")).click();
+    /* wd.findElement(By.xpath("//table[@id='maintable']/tbody/tr["+index+"]/td[8]/a/img")).click();
+
      }
+     */
 
   public void submitContactModification() {
     click(By.xpath("//div[@id='content']/form[1]/input[22]"));
@@ -109,12 +123,12 @@ public class ContactHelper extends HelperBase{
       for (WebElement element: elements) {
       /*String name = element.getText();*/
       List<WebElement> cells = element.findElements(By.tagName("td"));
+
+      int id = Integer.parseInt(cells.get(0).findElement(By.tagName("input")).getAttribute("id"));
       String lastname = cells.get(1).getText();
       String firstname = cells.get(2).getText();
-     int id = Integer.parseInt(cells.get(0).findElement(By.tagName("input")).getAttribute("id"));
 
-
-      ContactData contact = new ContactData(id, "Monika6", "Radler8", null, null, null);
+      ContactData contact = new ContactData(id, firstname, lastname, null, null, null, null);
       contacts.add(contact);
     }
 
