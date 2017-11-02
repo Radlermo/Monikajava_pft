@@ -35,4 +35,5 @@ public class ContactModification extends TestBase {
       Assert.assertEquals(before, after);
    /* Assert.assertEquals(new HashSet<Object>(before) , new HashSet<Object>(after)); /* zbiory*/
   }
+
 }

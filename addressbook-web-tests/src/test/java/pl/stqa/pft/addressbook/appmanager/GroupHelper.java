@@ -7,7 +7,9 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import pl.stqa.pft.addressbook.model.GroupData;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class GroupHelper extends HelperBase {
 
@@ -43,6 +45,10 @@ public class GroupHelper extends HelperBase {
     wd.findElements(By.name("selected[]")).get(index).click(); /*get(index).click - zaznaczy się grupa, którą wybierzemy po indeksie*/
       /* click(By.name("selected[]")); */
       }
+  public void selectGroupById(int id) {
+    wd.findElement(By.cssSelector("input[value='" + id +"']")).click();
+  }
+
 
   public void initGroupModification() {
     click(By.name("edit"));
@@ -59,20 +65,26 @@ public class GroupHelper extends HelperBase {
     returnToGroupPage();
   }
 
-  public void modify(int index, GroupData group) {
-   selectGroup(index);
-   initGroupModification();
-   fillGroupForm(group);
-   submitGroupModification();
-   returnToGroupPage();
-  }
 
-  public void delete(int index) {
+  public void modify(GroupData group) {
+    selectGroupById(group.getId());
+    initGroupModification();
+    fillGroupForm(group);
+    submitGroupModification();
+    returnToGroupPage();}
+
+
+  /* public void delete(int index) {
     selectGroup(index);
     deleteSelectedGroup();
     returnToGroupPage();
-  }
+  }*/
 
+  public void delete(GroupData group) {
+    selectGroupById(group.getId());
+    deleteSelectedGroup();
+    returnToGroupPage();
+  }
   public boolean isThereAGroup() {
     return isElementPresent(By.name("selected[]"));
   }
@@ -81,6 +93,7 @@ public class GroupHelper extends HelperBase {
     return wd.findElements(By.name("selected[]")).size();
   }
 
+  //listy
   public List<GroupData> list() {
     List<GroupData> groups = new ArrayList<GroupData>();/* tworzymy listę*/
     /*wypełniamy listę*/
@@ -94,4 +107,21 @@ public class GroupHelper extends HelperBase {
 
     return groups;
   }
+//zbiory
+  public Set<GroupData> all() {
+    Set<GroupData> groups = new HashSet<>();/* tworzymy listę*/
+    /*wypełniamy listę*/
+    List<WebElement> elements = wd.findElements(By.cssSelector("span.group"));
+    /*przejście po elementach w cyklu*/
+    for (WebElement element : elements) {
+      String name = element.getText();
+      int id = Integer.parseInt(element.findElement(By.tagName("input")).getAttribute("value"));
+      groups.add(new GroupData().withId(id).withName(name));
+    }
+
+    return groups;
+  }
+
+
+
 }
