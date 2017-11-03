@@ -1,12 +1,20 @@
 package pl.stqa.pft.addressbook.tests;
 
+import org.hamcrest.CoreMatchers;
+import org.hamcrest.MatcherAssert;
+import org.hamcrest.Matchers;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import pl.stqa.pft.addressbook.model.GroupData;
+import pl.stqa.pft.addressbook.model.Groups;
 
 import java.util.Comparator;
 import java.util.List;
 import java.util.Set;
+
+import static org.hamcrest.CoreMatchers.*;
+import static org.hamcrest.CoreMatchers.equalTo;
+import static org.hamcrest.MatcherAssert.assertThat;
 
 public class GroupCreationTest extends TestBase {
 
@@ -15,16 +23,16 @@ public class GroupCreationTest extends TestBase {
 
      app.goTo().groupPage();
     //zbiory
-     Set<GroupData> before = app.group().all();
+     Groups before = app.group().all();
      GroupData group = new GroupData().withName("test2");
      app.group().create(group);
-     Set<GroupData> after = app.group().all();
-     Assert.assertEquals(after.size(), before.size() + 1);
+     Groups after = app.group().all();
+     assertThat(after.size(), equalTo(before.size() + 1));
 
-     group.withId(after.stream().mapToInt((g) -> g.getId()).max().getAsInt());  //jako parametr przyjmuje grupę, jako wynik id grupy
-
-     before.add(group);
-     Assert.assertEquals(before, after);
+     //group.withId(after.stream().mapToInt((g) -> g.getId()).max().getAsInt());  //jako parametr przyjmuje grupę, jako wynik id grupy, przesuwamy parametr do assertThat
+     //before.add(group); - usuwamy
+     assertThat(after, equalTo(before.withAdded(group.withId(after.stream().mapToInt((g) -> g.getId()).max().getAsInt())))); //metoda hamcrest - sprawdza czy dwa obiekty są sobie równe. najpierw piszemy MatcherAssert.assertThat(after, CoreMatchers.equalTo(before));
+      // aby łatwiej się to czytało - żarówka/ add static import na MatcherAssert i CoreMatchers- Kod się skraca// potem przesuwamy paramter z group.withId...
    }
 
 

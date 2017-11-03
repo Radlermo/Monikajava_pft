@@ -5,6 +5,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import pl.stqa.pft.addressbook.model.GroupData;
+import pl.stqa.pft.addressbook.model.Groups;
 
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -108,8 +109,8 @@ public class GroupHelper extends HelperBase {
     return groups;
   }
 //zbiory
-  public Set<GroupData> all() {
-    Set<GroupData> groups = new HashSet<>();/* tworzymy listę*/
+  public Groups all() {
+    Groups groups = new Groups();/* tworzymy listę*/
     /*wypełniamy listę*/
     List<WebElement> elements = wd.findElements(By.cssSelector("span.group"));
     /*przejście po elementach w cyklu*/
