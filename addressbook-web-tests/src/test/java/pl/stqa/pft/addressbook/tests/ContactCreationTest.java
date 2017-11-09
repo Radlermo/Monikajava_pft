@@ -6,24 +6,21 @@ import pl.stqa.pft.addressbook.model.ContactData;
 
 import java.util.Comparator;
 import java.util.List;
+import java.util.Set;
 
 public class ContactCreationTest extends TestBase {
 
     @Test
     public void testContactCreation() {
-      List<ContactData> before = app.contact().list();
+      Set<ContactData> before = app.contact().allContacts();
       ContactData contact = new ContactData().withFirstname("Monika6").withLastname("Radler8").withAddress("testowa4").withTelephonehome("754589697").withEmail("7wst@test.pl").withGroup("test2");
       app.contact().create(contact,true);
-      List<ContactData> after = app.contact().list();
+      Set<ContactData> after = app.contact().allContacts();
       Assert.assertEquals(after.size(), before.size() + 1);
 
-
-      contact.withId(after.stream().max((t1, t2) -> Integer.compare(t1.getId(), t2.getId())).get().getId());
+      contact.withId(after.stream().mapToInt(g -> g.getId()).max().getAsInt());
       before.add(contact);
-        Comparator<? super ContactData> byId = (c1, c2) -> Integer.compare(c1.getId(), c2.getId());
-        before.sort(byId);
-        after.sort(byId);
-        Assert.assertEquals(before, after);
+      Assert.assertEquals(before, after);
       /*Assert.assertEquals(new HashSet<Object>(before) , new HashSet<Object>(after));*/
     }
 
