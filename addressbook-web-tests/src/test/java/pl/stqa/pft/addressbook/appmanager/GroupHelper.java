@@ -63,6 +63,7 @@ public class GroupHelper extends HelperBase {
     initGroupCreation();
     fillGroupForm(group);
     submitGroupCreation();
+    groupCache = null;
     returnToGroupPage();
   }
 
@@ -72,6 +73,7 @@ public class GroupHelper extends HelperBase {
     initGroupModification();
     fillGroupForm(group);
     submitGroupModification();
+    groupCache = null;
     returnToGroupPage();}
 
 
@@ -84,6 +86,7 @@ public class GroupHelper extends HelperBase {
   public void delete(GroupData group) {
     selectGroupById(group.getId());
     deleteSelectedGroup();
+    groupCache = null;
     returnToGroupPage();
   }
   public boolean isThereAGroup() {
@@ -108,19 +111,26 @@ public class GroupHelper extends HelperBase {
 
     return groups;
   }
+
+  //keszowanie - zapamiętywanie wyniku jakiejś operacji po to żeby nie sprawdzać tego drugi raz w innym miejscu
+  private Groups groupCache = null;
+
 //zbiory
   public Groups all() {
-    Groups groups = new Groups();/* tworzymy listę*/
+    if (groupCache !=null) {
+      return new Groups(groupCache);//jeśli cache nie jest pusty to trzeba zwrócić jego kopię
+    }
+    groupCache = new Groups();/* tworzymy listę*/
     /*wypełniamy listę*/
     List<WebElement> elements = wd.findElements(By.cssSelector("span.group"));
     /*przejście po elementach w cyklu*/
     for (WebElement element : elements) {
       String name = element.getText();
       int id = Integer.parseInt(element.findElement(By.tagName("input")).getAttribute("value"));
-      groups.add(new GroupData().withId(id).withName(name));
+      groupCache.add(new GroupData().withId(id).withName(name));
     }
 
-    return groups;
+    return new Groups(groupCache);
   }
 
 
