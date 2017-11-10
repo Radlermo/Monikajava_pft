@@ -31,31 +31,9 @@ public class GroupModificationTests extends TestBase {
     GroupData modifiedGroup = before.iterator().next();
     GroupData group = new GroupData().withId(modifiedGroup.getId()).withName("test1").withHeader("test2").withFooter("test3");
     app.group().modify(group);
+    assertThat(app.group().count(), equalTo(before.size()));/*porównanie rozmiaru list*/
     Groups after = app.group().all();/*rozmiar list po*/
-    assertEquals(after.size(), before.size()); /*porównanie rozmiaru list*/
-
-    //usuwamy poniższe linie
-    // before.remove(modifiedGroup);
-    //before.add(group);
-    //Comparator<? super GroupData> byId = (g1, g2) -> Integer.compare(g1.getId(),g2.getId());
-   // Assert.assertEquals (before, after);
     assertThat(after, equalTo(before.without(modifiedGroup).withAdded(group)));
 
      }
-/* stara wersja z listami
-List<GroupData> before = app.group().list();/*rozmiar list przed
-int index = before.size() - 1;
-  GroupData group = new GroupData().withId(before.get(index).getId()).withName("test1").withHeader("test2").withFooter("test3");
-    app.group().modify(index, group);
-  List<GroupData> after = app.group().list();/*rozmiar list po
-    Assert.assertEquals(after.size(), before.size()); /*porównanie rozmiaru list
-
-    before.remove(index);
-    before.add(group);
-  Comparator<? super GroupData> byId = (g1, g2) -> Integer.compare(g1.getId(),g2.getId());
-    before.sort(byId);
-    after.sort(byId);
-    Assert.assertEquals (before, after);*/
-
-
 }
