@@ -173,5 +173,11 @@ public class ContactHelper extends HelperBase{
      WebElement row = checkbox.findElement(By.xpath("./../.."));
      List<WebElement> cells = row.findElements(By.tagName("td"));
      cells.get(7).findElement(By.tagName("a")).click();
+     // można też użyć innych sposobów szukania checkboxa
+     //wd.findElement(By.xpath(String.format("//input[@value='%s']/../../td[8]/a", id))).click();
+     //wd.findElement(By.xpath(String.format("//tr[.//input[@value='%s']]/td[8]/a", id))).click();
+     //wd.findElement(By.cssSelector(String.format("a[href='edit.php?id=%s']", id))).click();
+
+
     }
 }
