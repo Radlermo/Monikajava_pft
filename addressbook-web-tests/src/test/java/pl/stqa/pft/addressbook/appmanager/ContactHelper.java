@@ -173,7 +173,6 @@ public class ContactHelper extends HelperBase{
  }
 
 
-
     private void initContactModificationById (int id) {
      WebElement checkbox = wd.findElement(By.cssSelector(String.format("input[value='%s'", id)));
      WebElement row = checkbox.findElement(By.xpath("./../.."));
@@ -184,6 +183,18 @@ public class ContactHelper extends HelperBase{
      //wd.findElement(By.xpath(String.format("//tr[.//input[@value='%s']]/td[8]/a", id))).click();
      //wd.findElement(By.cssSelector(String.format("a[href='edit.php?id=%s']", id))).click();
 
+    }
+
+    public ContactData infoFromDetailsForm(ContactData contact) {
+        initContactDetailsById(contact.getId());
+        String allDetails = wd.findElement(By.xpath("//div[@id='content']")).getText();
+        wd.navigate().back();
+        return new ContactData().withAllDetails(allDetails);
+    }
+
+    private void initContactDetailsById(int id) {
+        wd.findElement(By.cssSelector(String.format("a[href='view.php?id=%s']", id))).click();
 
     }
+
 }

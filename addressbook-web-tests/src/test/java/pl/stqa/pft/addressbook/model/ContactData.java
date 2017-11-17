@@ -14,9 +14,19 @@ public class ContactData {
   private String allEmails;
   private String group;
   private String allPhones;
+  private String allDetails;
 
 
-    public ContactData withAllPhones(String allPhones) {
+  public String getAllDetails() {
+    return allDetails;
+  }
+
+  public ContactData withAllDetails(String allDetails) {
+    this.allDetails = allDetails;
+    return this;
+  }
+
+  public ContactData withAllPhones(String allPhones) {
     this.allPhones = allPhones;
     return this;
   }
