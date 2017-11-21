@@ -6,6 +6,7 @@ import com.beust.jcommander.ParameterException;
 import com.thoughtworks.xstream.XStream;
 import pl.stqa.pft.addressbook.model.GroupData;
 
+
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
