@@ -17,7 +17,7 @@ public class ContactCreationTest extends TestBase {
     public void testContactCreation() {
       File photo = new File("src/test/resources/scrum.jpg");
       Contacts before = app.contact().allContacts();
-      ContactData contact = new ContactData().withFirstname("Monika6").withLastname("Radler8").withAddress("testowa4").withTelephonehome("754589697").withEmail("7wst@test.pl")
+      ContactData contact = new ContactData().withFirstname("Monika6").withLastname("Radler8").withAddress("testowa6").withTelephonehome("754589697").withEmail("7wst@test.pl")
               .withGroup("test2").withPhoto(photo);
       app.contact().create(contact,true);
       Contacts after = app.contact().allContacts();

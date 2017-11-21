@@ -15,7 +15,7 @@ public class GroupCreationTest extends TestBase {
      app.goTo().groupPage();
     //zbiory
      Groups before = app.group().all();
-     GroupData group = new GroupData().withName("test19");
+     GroupData group = new GroupData().withName("test19").withHeader("tet20").withFooter("test21");
      app.group().create(group);
      assertThat(app.group().count(), equalTo(before.size() + 1));
      Groups after = app.group().all();

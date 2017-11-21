@@ -21,7 +21,7 @@ public class GroupModificationTests extends TestBase {
   public void ensurePreconditions() {
   app.goTo().groupPage();
     if(app.group().all().size() == 0){
-    app.group().create(new GroupData().withName("test1"));
+    app.group().create(new GroupData().withName("test1").withHeader("test2").withFooter("test3"));
   } /*jeśli nie ma grupy do usunięcia to ją stwórz*/
 }
 
