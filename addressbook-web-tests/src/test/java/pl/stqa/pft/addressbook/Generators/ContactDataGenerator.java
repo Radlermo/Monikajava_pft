@@ -71,7 +71,7 @@ public class ContactDataGenerator {
     private List<ContactData> generateContacts(int count) {
         List<ContactData> contacts = new ArrayList<ContactData>();
         for (int i = 0; i < count; i++) {
-            contacts.add(new ContactData().withFirstname(String.format("fistname %s", i)).withLastname(String.format("lastneame %s", i))
+            contacts.add(new ContactData().withFirstname(String.format("fistname %s", i)).withLastname(String.format("lastname %s", i))
                     .withAddress(String.format("address %s", i)).withTelephonehome(String.format("telephonehome %s", i))
                     .withEmail(String.format("email %s", i)).withGroup(String.format("test %s", i))
                     .withPhoto(new File("src/test/resources/scrum.jpg")));
