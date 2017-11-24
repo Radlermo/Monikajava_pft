@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="pl.stqa.pft.addressbook.tests.GroupCreationTest" tests="7" skipped="0" failures="0" errors="0" timestamp="2017-11-24T14:55:41" hostname="PLGLI2NB0042" time="26.262">
+  <properties/>
+  <testcase name="testBadGroupCreation" classname="pl.stqa.pft.addressbook.tests.GroupCreationTest" time="5.667"/>
+  <testcase name="testGroupCreation[0](GroupData{id='0', name='test 0'})" classname="pl.stqa.pft.addressbook.tests.GroupCreationTest" time="3.222"/>
+  <testcase name="testGroupCreation[1](GroupData{id='0', name='test 1'})" classname="pl.stqa.pft.addressbook.tests.GroupCreationTest" time="3.53"/>
+  <testcase name="testGroupCreation[2](GroupData{id='0', name='test 2'})" classname="pl.stqa.pft.addressbook.tests.GroupCreationTest" time="3.739"/>
+  <testcase name="testGroupCreationJson[0](GroupData{id='2147483647', name='test 0'})" classname="pl.stqa.pft.addressbook.tests.GroupCreationTest" time="3.481"/>
+  <testcase name="testGroupCreationJson[1](GroupData{id='2147483647', name='test 1'})" classname="pl.stqa.pft.addressbook.tests.GroupCreationTest" time="3.367"/>
+  <testcase name="testGroupCreationJson[2](GroupData{id='2147483647', name='test 2'})" classname="pl.stqa.pft.addressbook.tests.GroupCreationTest" time="3.064"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

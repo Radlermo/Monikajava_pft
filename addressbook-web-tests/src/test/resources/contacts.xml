@@ -2,7 +2,7 @@
   <pl.stqa.pft.addressbook.model.ContactData>
     <id>2147483647</id>
     <firstname>fistname 0</firstname>
-    <lastname>lastneame 0</lastname>
+    <lastname>lastname 0</lastname>
     <address>address 0</address>
     <telephonehome>telephonehome 0</telephonehome>
     <email>email 0</email>
@@ -12,7 +12,7 @@
   <pl.stqa.pft.addressbook.model.ContactData>
     <id>2147483647</id>
     <firstname>fistname 1</firstname>
-    <lastname>lastneame 1</lastname>
+    <lastname>lastname 1</lastname>
     <address>address 1</address>
     <telephonehome>telephonehome 1</telephonehome>
     <email>email 1</email>
@@ -22,7 +22,7 @@
   <pl.stqa.pft.addressbook.model.ContactData>
     <id>2147483647</id>
     <firstname>fistname 2</firstname>
-    <lastname>lastneame 2</lastname>
+    <lastname>lastname 2</lastname>
     <address>address 2</address>
     <telephonehome>telephonehome 2</telephonehome>
     <email>email 2</email>
