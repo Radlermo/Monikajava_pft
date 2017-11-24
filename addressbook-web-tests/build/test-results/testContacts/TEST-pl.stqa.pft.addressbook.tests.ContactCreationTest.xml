@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="pl.stqa.pft.addressbook.tests.GroupCreationTest" tests="8" skipped="7" failures="1" errors="0" timestamp="2017-11-24T18:26:53" hostname="PLGLI2NB0042" time="0.298">
+<testsuite name="pl.stqa.pft.addressbook.tests.ContactCreationTest" tests="5" skipped="4" failures="1" errors="0" timestamp="2017-11-24T18:29:42" hostname="PLGLI2NB0042" time="0.291">
   <properties/>
-  <testcase name="setUp" classname="pl.stqa.pft.addressbook.tests.GroupCreationTest" time="0.011">
+  <testcase name="setUp" classname="pl.stqa.pft.addressbook.tests.ContactCreationTest" time="0.012">
     <failure message="java.util.UnknownFormatConversionException: Conversion = '.'" type="java.util.UnknownFormatConversionException">java.util.UnknownFormatConversionException: Conversion = '.'
 	at java.util.Formatter.checkText(Formatter.java:2579)
 	at java.util.Formatter.parse(Formatter.java:2565)
@@ -56,25 +56,16 @@
 	at java.lang.Thread.run(Thread.java:748)
 </failure>
   </testcase>
-  <testcase name="testBadGroupCreation" classname="pl.stqa.pft.addressbook.tests.GroupCreationTest" time="0.001">
+  <testcase name="testContactCreation" classname="pl.stqa.pft.addressbook.tests.ContactCreationTest" time="0.0">
     <skipped/>
   </testcase>
-  <testcase name="testGroupCreation" classname="pl.stqa.pft.addressbook.tests.GroupCreationTest" time="0.0">
+  <testcase name="testContactCreation" classname="pl.stqa.pft.addressbook.tests.ContactCreationTest" time="0.0">
     <skipped/>
   </testcase>
-  <testcase name="testGroupCreation" classname="pl.stqa.pft.addressbook.tests.GroupCreationTest" time="0.0">
+  <testcase name="testContactCreation" classname="pl.stqa.pft.addressbook.tests.ContactCreationTest" time="0.0">
     <skipped/>
   </testcase>
-  <testcase name="testGroupCreation" classname="pl.stqa.pft.addressbook.tests.GroupCreationTest" time="0.0">
-    <skipped/>
-  </testcase>
-  <testcase name="testGroupCreationJson" classname="pl.stqa.pft.addressbook.tests.GroupCreationTest" time="0.0">
-    <skipped/>
-  </testcase>
-  <testcase name="testGroupCreationJson" classname="pl.stqa.pft.addressbook.tests.GroupCreationTest" time="0.0">
-    <skipped/>
-  </testcase>
-  <testcase name="testGroupCreationJson" classname="pl.stqa.pft.addressbook.tests.GroupCreationTest" time="0.0">
+  <testcase name="testCurrentDir" classname="pl.stqa.pft.addressbook.tests.ContactCreationTest" time="0.0">
     <skipped/>
   </testcase>
   <system-out><![CDATA[]]></system-out>
