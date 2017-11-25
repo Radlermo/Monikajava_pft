@@ -3,6 +3,8 @@ package pl.stqa.pft.addressbook.tests;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.thoughtworks.xstream.XStream;
+import org.slf4j.LoggerFactory;
+import org.slf4j.Logger;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import pl.stqa.pft.addressbook.model.GroupData;
@@ -18,6 +20,9 @@ import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.MatcherAssert.assertThat;
 
 public class GroupCreationTest extends TestBase {
+
+ Logger logger = LoggerFactory.getLogger(GroupCreationTest.class);
+
     //provider testowych danych
     @DataProvider //XML
     public Iterator<Object[]> validGroupsFromXml() throws IOException {
@@ -59,7 +64,7 @@ public class GroupCreationTest extends TestBase {
 
     @Test(dataProvider = "validGroupsFromXml")
     public void testGroupCreation(GroupData group) {
-      app.goTo().groupPage();
+        app.goTo().groupPage();
       //zbiory
       Groups before = app.group().all();
       app.group().create(group);
@@ -69,7 +74,8 @@ public class GroupCreationTest extends TestBase {
       //before.add(group); - usuwamy
       assertThat(after, equalTo(before.withAdded(group.withId(after.stream().mapToInt((g) -> g.getId()).max().getAsInt())))); //metoda hamcrest - sprawdza czy dwa obiekty są sobie równe. najpierw piszemy MatcherAssert.assertThat(after, CoreMatchers.equalTo(before));
             // aby łatwiej się to czytało - żarówka/ add static import na MatcherAssert i CoreMatchers- Kod się skraca// potem przesuwamy paramter z group.withId...
-        }
+
+    }
 
     @Test(dataProvider = "validGroupsFromJson")
     public void testGroupCreationJson(GroupData group) {
