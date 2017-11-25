@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="pl.stqa.pft.addressbook.tests.ContactCreationTest" tests="4" skipped="0" failures="0" errors="0" timestamp="2017-11-24T18:53:13" hostname="PLGLI2NB0042" time="25.797">
+<testsuite name="pl.stqa.pft.addressbook.tests.ContactCreationTest" tests="4" skipped="0" failures="0" errors="0" timestamp="2017-11-25T21:26:42" hostname="PLGLI2NB0042" time="29.003">
   <properties/>
-  <testcase name="testContactCreation[0](ContactData{id=2147483647, firstname='fistname 0', lastname='lastname 0'})" classname="pl.stqa.pft.addressbook.tests.ContactCreationTest" time="10.911"/>
-  <testcase name="testContactCreation[1](ContactData{id=2147483647, firstname='fistname 1', lastname='lastname 1'})" classname="pl.stqa.pft.addressbook.tests.ContactCreationTest" time="7.35"/>
-  <testcase name="testContactCreation[2](ContactData{id=2147483647, firstname='fistname 2', lastname='lastname 2'})" classname="pl.stqa.pft.addressbook.tests.ContactCreationTest" time="7.534"/>
-  <testcase name="testCurrentDir" classname="pl.stqa.pft.addressbook.tests.ContactCreationTest" time="0.0"/>
+  <testcase name="testContactCreation[0](ContactData{id=2147483647, firstname='fistname 0', lastname='lastname 0'})" classname="pl.stqa.pft.addressbook.tests.ContactCreationTest" time="12.463"/>
+  <testcase name="testContactCreation[1](ContactData{id=2147483647, firstname='fistname 1', lastname='lastname 1'})" classname="pl.stqa.pft.addressbook.tests.ContactCreationTest" time="8.318"/>
+  <testcase name="testContactCreation[2](ContactData{id=2147483647, firstname='fistname 2', lastname='lastname 2'})" classname="pl.stqa.pft.addressbook.tests.ContactCreationTest" time="8.219"/>
+  <testcase name="testCurrentDir" classname="pl.stqa.pft.addressbook.tests.ContactCreationTest" time="0.001"/>
   <system-out><![CDATA[C:\Users\Radlermo\Documents\GitHub\Monikajava_pft\addressbook-web-tests\.
 C:\Users\Radlermo\Documents\GitHub\Monikajava_pft\addressbook-web-tests\src\test\resources\scrum.jpg
 true
