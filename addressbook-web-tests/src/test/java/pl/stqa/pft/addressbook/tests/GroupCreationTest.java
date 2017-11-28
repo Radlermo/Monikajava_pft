@@ -66,10 +66,10 @@ public class GroupCreationTest extends TestBase {
     public void testGroupCreation(GroupData group) {
         app.goTo().groupPage();
       //zbiory
-      Groups before = app.group().all();
+      Groups before = app.db().groups();
       app.group().create(group);
       assertThat(app.group().count(), equalTo(before.size() + 1));
-      Groups after = app.group().all();
+      Groups after = app.db().groups();
       //group.withId(after.stream().mapToInt((g) -> g.getId()).max().getAsInt());  //jako parametr przyjmuje grupę, jako wynik id grupy, przesuwamy parametr do assertThat
       //before.add(group); - usuwamy
       assertThat(after, equalTo(before.withAdded(group.withId(after.stream().mapToInt((g) -> g.getId()).max().getAsInt())))); //metoda hamcrest - sprawdza czy dwa obiekty są sobie równe. najpierw piszemy MatcherAssert.assertThat(after, CoreMatchers.equalTo(before));
@@ -81,10 +81,10 @@ public class GroupCreationTest extends TestBase {
     public void testGroupCreationJson(GroupData group) {
         app.goTo().groupPage();
         //zbiory
-        Groups before = app.group().all();
+        Groups before = app.db().groups();
         app.group().create(group);
         assertThat(app.group().count(), equalTo(before.size() + 1));
-        Groups after = app.group().all();
+        Groups after = app.db().groups();
         //group.withId(after.stream().mapToInt((g) -> g.getId()).max().getAsInt());  //jako parametr przyjmuje grupę, jako wynik id grupy, przesuwamy parametr do assertThat
         //before.add(group); - usuwamy
         assertThat(after, equalTo(before.withAdded(group.withId(after.stream().mapToInt((g) -> g.getId()).max().getAsInt())))); //metoda hamcrest - sprawdza czy dwa obiekty są sobie równe. najpierw piszemy MatcherAssert.assertThat(after, CoreMatchers.equalTo(before));

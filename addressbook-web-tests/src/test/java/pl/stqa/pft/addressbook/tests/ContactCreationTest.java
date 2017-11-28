@@ -40,11 +40,11 @@ public class ContactCreationTest extends TestBase {
     @Test(dataProvider = "validContacts")
     public void testContactCreation(ContactData contact) {
       File photo = new File("src/test/resources/scrum.jpg");
-      Contacts before = app.contact().allContacts();
+      Contacts before = app.db().contacts();
       /*ContactData contact = new ContactData().withFirstname("Monika6").withLastname("Radler8").withAddress("testowa6").withTelephonehome("754589697").withEmail("7wst@test.pl")
               .withGroup("test2").withPhoto(photo);*/
       app.contact().create(contact,true);
-      Contacts after = app.contact().allContacts();
+      Contacts after = app.db().contacts();
       assertThat(after.size(), equalTo(before.size() + 1));
       assertThat(after, equalTo(before.withAdded(contact.withId(after.stream().mapToInt(g -> g.getId()).max().getAsInt()))));
       /*Assert.assertEquals(new HashSet<Object>(before) , new HashSet<Object>(after));*/
