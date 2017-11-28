@@ -1,30 +1,76 @@
 package pl.stqa.pft.addressbook.model;
 
+import org.hibernate.annotations.Type;
+
+import javax.persistence.*;
 import java.io.File;
 
+@Entity
+@Table(name = "addressbook")
 public class ContactData {
+
+  @Id
+  @Column(name="id")
   private int id = Integer.MAX_VALUE;
+
+  @Column(name="firstname")
   private String firstname;
+
+  @Column(name="lastname")
   private String lastname;
+
+  @Column(name="address")
+  @Type(type = "text")
   private String address;
+
+  @Column(name="home")
+  @Type(type = "text")
   private String telephonehome;
+
+  @Column(name="mobile")
+  @Type(type = "text")
   private String mobile;
+
+  @Column(name="work")
+  @Type(type = "text")
   private String work;
+
+  @Column(name="email")
+  @Type(type = "text")
   private String email;
+
+  @Column(name="email2")
+  @Type(type = "text")
   private String email2;
+
+  @Column(name="email3")
+  @Type(type = "text")
   private String email3;
+
+
+
+  @Transient
   private String allEmails;
+
+  @Transient //żeby pole było pominięte i nie wyciągane z bazy danych
   private String group;
+
+  @Transient
   private String allPhones;
+
+  @Transient
   private String allDetails;
-  private File photo;
+
+  @Column(name = "photo")
+  @Type(type = "text")
+  private String photo;
 
   public File getPhoto() {
-    return photo;
+    return new File(photo);
   }
 
   public ContactData withPhoto(File photo) {
-    this.photo = photo;
+    this.photo = photo.getPath();
     return this;
   }
 
@@ -142,6 +188,15 @@ public class ContactData {
   }
 
   @Override
+  public String toString() {
+    return "ContactData{" +
+            "id=" + id +
+            ", firstname='" + firstname + '\'' +
+            ", lastname='" + lastname + '\'' +
+            '}';
+  }
+
+  @Override
   public boolean equals(Object o) {
     if (this == o) return true;
     if (o == null || getClass() != o.getClass()) return false;
@@ -159,15 +214,6 @@ public class ContactData {
     result = 31 * result + (firstname != null ? firstname.hashCode() : 0);
     result = 31 * result + (lastname != null ? lastname.hashCode() : 0);
     return result;
-  }
-
-  @Override
-  public String toString() {
-    return "ContactData{" +
-            "id=" + id +
-            ", firstname='" + firstname + '\'' +
-            ", lastname='" + lastname + '\'' +
-            '}';
   }
 
 }
