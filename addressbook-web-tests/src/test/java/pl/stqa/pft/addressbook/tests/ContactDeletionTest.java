@@ -18,8 +18,8 @@ public class ContactDeletionTest extends TestBase {
     File photo = new File("src/test/resources/scrum.jpg");
     if (app.db().contacts().size() == 0){
       app.contact().create(new ContactData().withFirstname("Monika1").withLastname("Radler1").withAddress("testowa4").withTelephonehome("654589698")
-              .withEmail("twst@test.pl").withGroup("test1").withPhoto(photo), true);
-
+              .withEmail("twst@test.pl").withPhoto(photo), true);
+       //.withGroup("test1")
     }
   }
 
@@ -37,6 +37,7 @@ public class ContactDeletionTest extends TestBase {
       Assert.assertEquals(after.size() , before.size() - 1);
 
       assertThat(after, equalTo(before.without(deletedContact)));
+      VerifyContactListInUi();
       }
 
 

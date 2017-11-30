@@ -17,7 +17,8 @@ public class ContactModification extends TestBase {
   public void ensurePreconditions() {
     if (app.db().contacts().size() == 0){
       app.goTo().goToHomePage();
-      app.contact().create(new ContactData().withFirstname("Monika6").withLastname("Radler8").withAddress("testowa4").withTelephonehome("754589697").withEmail("7wst@test.pl").withGroup("test2"),true);
+      app.contact().create(new ContactData().withFirstname("Monika6").withLastname("Radler8").withAddress("testowa4").withTelephonehome("754589697").withEmail("7wst@test.pl"),true);
+    //.withGroup("test2")
     }
   }
 
@@ -29,7 +30,8 @@ public class ContactModification extends TestBase {
     ContactData modifiedContact = before.iterator().next();
     //int index = before.size()-1;
     ContactData contact = new ContactData().withId(modifiedContact.getId()).withFirstname("Monika12").withLastname("Radler12").withAddress("testowa4")
-            .withTelephonehome("754589697").withEmail("7wst@test.pl").withGroup("test2").withPhoto(photo);;
+            .withTelephonehome("754589697").withEmail("7wst@test.pl").withPhoto(photo);
+            //.withGroup("test2")
     app.goTo().goToHomePage();
     app.contact().modify(contact);
     //app.goTo().goToHomePage();

@@ -6,6 +6,8 @@ import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import pl.stqa.pft.addressbook.model.ContactData;
 import pl.stqa.pft.addressbook.model.Contacts;
+import pl.stqa.pft.addressbook.model.GroupData;
+import pl.stqa.pft.addressbook.model.Groups;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -43,7 +45,8 @@ public class ContactCreationTest extends TestBase {
       Contacts before = app.db().contacts();
       /*ContactData contact = new ContactData().withFirstname("Monika6").withLastname("Radler8").withAddress("testowa6").withTelephonehome("754589697").withEmail("7wst@test.pl")
               .withGroup("test2").withPhoto(photo);*/
-      app.contact().create(contact,true);
+      GroupData groups = app.db().groups().iterator().next();
+      app.contact().create(contact.inGroup(groups).withPhoto(photo),true);
       Contacts after = app.db().contacts();
       assertThat(after.size(), equalTo(before.size() + 1));
       assertThat(after, equalTo(before.withAdded(contact.withId(after.stream().mapToInt(g -> g.getId()).max().getAsInt()))));

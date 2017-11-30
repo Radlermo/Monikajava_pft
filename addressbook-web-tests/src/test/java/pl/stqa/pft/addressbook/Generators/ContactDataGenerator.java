@@ -63,7 +63,8 @@ public class ContactDataGenerator {
         Writer writer = new FileWriter(file); //otwieramy plik do zapisu
         for (ContactData contact : contacts) {//przechodzimy w pętli po wszytskich grupach które znajdują się na liście groups
             writer.write(String.format("%s;%s;%s\n", contact.getFirstname(), contact.getLastname(), contact.getAddress()
-                    , contact.getTelephonehome(), contact.getEmail(), contact.getGroup(), contact.getPhoto()));//zapisanie pliku
+                    , contact.getTelephonehome(), contact.getEmail(), contact.getPhoto()));//zapisanie pliku
+            // contact.getGroup(),
         }
         writer.close();
     }
@@ -73,7 +74,7 @@ public class ContactDataGenerator {
         for (int i = 0; i < count; i++) {
             contacts.add(new ContactData().withFirstname(String.format("fistname %s", i)).withLastname(String.format("lastname %s", i))
                     .withAddress(String.format("address %s", i)).withTelephonehome(String.format("telephonehome %s", i))
-                    .withEmail(String.format("email %s", i)).withGroup(String.format("test %s", i))
+                    .withEmail(String.format("email %s", i))//.withGroup(String.format("test %s", i))
                     .withPhoto(new File("src/test/resources/scrum.jpg")));
         }
         return contacts;
