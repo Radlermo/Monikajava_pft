@@ -5,6 +5,7 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import pl.stqa.pft.addressbook.model.ContactData;
 import pl.stqa.pft.addressbook.model.Contacts;
+import pl.stqa.pft.addressbook.model.Groups;
 
 import java.io.File;
 
@@ -15,6 +16,7 @@ import static org.testng.Assert.*;
 public class ContactModification extends TestBase {
   @BeforeMethod
   public void ensurePreconditions() {
+    File photo = new File("src/test/resources/scrum.jpg");
     if (app.db().contacts().size() == 0){
       app.goTo().goToHomePage();
       app.contact().create(new ContactData().withFirstname("Monika6").withLastname("Radler8").withAddress("testowa4").withTelephonehome("754589697").withEmail("7wst@test.pl"),true);
