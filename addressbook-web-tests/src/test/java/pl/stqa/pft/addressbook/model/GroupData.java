@@ -33,7 +33,7 @@ public class GroupData {
   private String footer;
 
 
-  @ManyToMany(mappedBy = "groups")
+  @ManyToMany(fetch = FetchType.EAGER, mappedBy = "groups")
   private Set<ContactData> contacts = new HashSet<ContactData>();
 
   public Contacts getContacts() {
@@ -91,20 +91,20 @@ public class GroupData {
   }
 
   @Override
+  public String toString() {
+    return "GroupData{" +
+            "id=" + id +
+            ", name='" + name + '\'' +
+            '}';
+  }
+
+  @Override
   public int hashCode() {
     int result = id;
     result = 31 * result + (name != null ? name.hashCode() : 0);
     result = 31 * result + (header != null ? header.hashCode() : 0);
     result = 31 * result + (footer != null ? footer.hashCode() : 0);
     return result;
-  }
-
-  @Override
-  public String toString() {
-    return "GroupData{" +
-            "id='" + id + '\'' +
-            ", name='" + name + '\'' +
-            '}';
   }
 
 }

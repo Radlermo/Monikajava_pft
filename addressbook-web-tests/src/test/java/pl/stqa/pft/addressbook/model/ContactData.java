@@ -1,5 +1,8 @@
 package pl.stqa.pft.addressbook.model;
 
+import com.google.gson.annotations.Expose;
+import com.thoughtworks.xstream.annotations.XStreamAlias;
+import com.thoughtworks.xstream.annotations.XStreamOmitField;
 import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
@@ -9,44 +12,55 @@ import java.util.Set;
 
 @Entity
 @Table(name = "addressbook")
+@XStreamAlias("contact")
 public class ContactData {
 
   @Id
-  @Column(name="id")
+  @Column(name = "id")
+  @XStreamOmitField
   private int id = Integer.MAX_VALUE;
 
   @Column(name="firstname")
+  @Expose
   private String firstname;
 
   @Column(name="lastname")
+  @Expose
   private String lastname;
 
   @Column(name="address")
   @Type(type = "text")
+  @Expose
   private String address;
 
   @Column(name="home")
   @Type(type = "text")
+  @Expose
   private String telephonehome;
 
   @Column(name="mobile")
   @Type(type = "text")
+  @Expose
   private String mobile;
 
   @Column(name="work")
   @Type(type = "text")
+  @Expose
   private String work;
 
   @Column(name="email")
   @Type(type = "text")
+  @Expose
   private String email;
 
   @Column(name="email2")
   @Type(type = "text")
+  @Expose
   private String email2;
 
   @Column(name="email3")
   @Type(type = "text")
+  @Expose
   private String email3;
 
 
@@ -57,7 +71,7 @@ public class ContactData {
   @ManyToMany(fetch = FetchType.EAGER)//eager - chciwy, dzięki temu wyciągamy więcej informacji z bazy danych za jednym razem
   @JoinTable(name = "address_in_groups",//tabela która wykorzystywana jest dla związku pomiędzy grupami a kontaktami
           joinColumns = @JoinColumn(name = "id"), inverseJoinColumns = @JoinColumn(name = "group_id"))//id - id kontaktu, group_id - id grupy
-  private Set<GroupData> groups = new HashSet<GroupData>();
+  public Set<GroupData> groups = new HashSet<GroupData>();
 
 
   @Transient //@Transient żeby pole było pominięte i nie wyciągane z bazy danych
@@ -68,6 +82,7 @@ public class ContactData {
 
   @Column(name = "photo")
   @Type(type = "text")
+  @Expose
   private String photo;
 
   public File getPhoto() {
@@ -184,6 +199,29 @@ public class ContactData {
   public String getEmail3() { return email3;  }
 
   public String getAllEmails() { return allEmails;  }
+  public Groups getGroups() {    return new Groups(groups);
+  }
+
+  @Override
+  public String toString() {
+    return "ContactData{" +
+            "id=" + id +
+            ", firstname='" + firstname + '\'' +
+            ", lastname='" + lastname + '\'' +
+            ", address='" + address + '\'' +
+            ", telephonehome='" + telephonehome + '\'' +
+            ", mobile='" + mobile + '\'' +
+            ", work='" + work + '\'' +
+            ", email='" + email + '\'' +
+            ", email2='" + email2 + '\'' +
+            ", email3='" + email3 + '\'' +
+            ", allEmails='" + allEmails + '\'' +
+            ", groups=" + groups +
+            ", allPhones='" + allPhones + '\'' +
+            ", allDetails='" + allDetails + '\'' +
+            ", photo='" + photo + '\'' +
+            '}';
+  }
 
   @Override
   public boolean equals(Object o) {
@@ -229,19 +267,6 @@ public class ContactData {
     return result;
   }
 
-  public Groups getGroups() {
-    return new Groups(groups);
-  }
-
-  @Override
-  public String toString() {
-    return "ContactData{" +
-            "id=" + id +
-            ", firstname='" + firstname + '\'' +
-            ", lastname='" + lastname + '\'' +
-
-            '}';
-  }
   public ContactData inGroup(GroupData group) {
     groups.add(group);
     return this;

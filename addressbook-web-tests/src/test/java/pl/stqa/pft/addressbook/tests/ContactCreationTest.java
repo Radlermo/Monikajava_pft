@@ -2,8 +2,11 @@ package pl.stqa.pft.addressbook.tests;
 
 
 import com.thoughtworks.xstream.XStream;
+import org.openqa.selenium.By;
+import org.openqa.selenium.support.ui.Select;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
+import org.testng.annotations.TestInstance;
 import pl.stqa.pft.addressbook.model.ContactData;
 import pl.stqa.pft.addressbook.model.Contacts;
 import pl.stqa.pft.addressbook.model.GroupData;
@@ -36,23 +39,26 @@ public class ContactCreationTest extends TestBase {
         XStream xstream = new XStream();
         xstream.processAnnotations(ContactData.class);
         List<ContactData> contacts = (List<ContactData>) xstream.fromXML(xml);
-        return contacts.stream().map((g) -> new Object[]{g}).collect(Collectors.toList()).iterator();
+        return contacts.stream().map((c) -> new Object[]{c}).collect(Collectors.toList()).iterator();
     }
 
     @Test(dataProvider = "validContacts")
     public void testContactCreation(ContactData contact) {
-      //Groups groups = app.db().groups();
+      Groups groups = app.db().groups();
+      app.goTo().goToHomePage();
       File photo = new File("src/test/resources/scrum.jpg");
       Contacts before = app.db().contacts();
-     /* ContactData newContact = new ContactData().withFirstname("Monika6").withLastname("Radler8").withAddress("testowa6").withTelephonehome("754589697").withEmail("7wst@test.pl")
+     /*ContactData newContact = new ContactData().withFirstname("Monika6").withLastname("Radler8").withAddress("testowa6").withTelephonehome("754589697").withEmail("7wst@test.pl")
               .withPhoto(photo).inGroup(groups.iterator().next());//.withGroup("test2")*/
-      //GroupData groups = app.db().groups().iterator().next();
-      //app.contact().create(contact.withPhoto(photo).inGroup(groups.iterator().next()),true);
+     // GroupData groups = new GroupData().withName("test1");
+       //GroupData groups = app.db().groups().iterator().next();
+      app.contact().create(contact.withPhoto(photo).inGroup(groups.iterator().next()), true);
       app.contact().create(contact, true);
-      //app.contact().create(newContact, true);
+      app.goTo().goToHomePage();
+      //
       Contacts after = app.db().contacts();
       assertThat(after.size(), equalTo(before.size() + 1));
-      assertThat(after, equalTo(before.withAdded(contact.withId(after.stream().mapToInt(g -> g.getId()).max().getAsInt()))));
+      assertThat(after, equalTo(before.withAdded(contact.withId(after.stream().mapToInt(c -> c.getId()).max().getAsInt()))));
       VerifyContactListInUi();
       /*Assert.assertEquals(new HashSet<Object>(before) , new HashSet<Object>(after));*/
     }
