@@ -159,7 +159,10 @@ public class ContactData {
     this.allEmails = allEmails;
     return this;
   }
-
+  public ContactData inGroup(GroupData group) {
+    groups.add(group);
+    return this;
+  }
 
 
   public int getId() { return id; }
@@ -210,16 +213,7 @@ public class ContactData {
             ", lastname='" + lastname + '\'' +
             ", address='" + address + '\'' +
             ", telephonehome='" + telephonehome + '\'' +
-            ", mobile='" + mobile + '\'' +
-            ", work='" + work + '\'' +
             ", email='" + email + '\'' +
-            ", email2='" + email2 + '\'' +
-            ", email3='" + email3 + '\'' +
-            ", allEmails='" + allEmails + '\'' +
-            ", groups=" + groups +
-            ", allPhones='" + allPhones + '\'' +
-            ", allDetails='" + allDetails + '\'' +
-            ", photo='" + photo + '\'' +
             '}';
   }
 
@@ -237,13 +231,8 @@ public class ContactData {
     if (telephonehome != null ? !telephonehome.equals(that.telephonehome) : that.telephonehome != null) return false;
     if (mobile != null ? !mobile.equals(that.mobile) : that.mobile != null) return false;
     if (work != null ? !work.equals(that.work) : that.work != null) return false;
-    if (email != null ? !email.equals(that.email) : that.email != null) return false;
-    if (email2 != null ? !email2.equals(that.email2) : that.email2 != null) return false;
-    if (email3 != null ? !email3.equals(that.email3) : that.email3 != null) return false;
     if (allEmails != null ? !allEmails.equals(that.allEmails) : that.allEmails != null) return false;
-    if (groups != null ? !groups.equals(that.groups) : that.groups != null) return false;
     if (allPhones != null ? !allPhones.equals(that.allPhones) : that.allPhones != null) return false;
-    if (allDetails != null ? !allDetails.equals(that.allDetails) : that.allDetails != null) return false;
     return photo != null ? photo.equals(that.photo) : that.photo == null;
   }
 
@@ -256,20 +245,12 @@ public class ContactData {
     result = 31 * result + (telephonehome != null ? telephonehome.hashCode() : 0);
     result = 31 * result + (mobile != null ? mobile.hashCode() : 0);
     result = 31 * result + (work != null ? work.hashCode() : 0);
-    result = 31 * result + (email != null ? email.hashCode() : 0);
-    result = 31 * result + (email2 != null ? email2.hashCode() : 0);
-    result = 31 * result + (email3 != null ? email3.hashCode() : 0);
     result = 31 * result + (allEmails != null ? allEmails.hashCode() : 0);
-    result = 31 * result + (groups != null ? groups.hashCode() : 0);
     result = 31 * result + (allPhones != null ? allPhones.hashCode() : 0);
-    result = 31 * result + (allDetails != null ? allDetails.hashCode() : 0);
     result = 31 * result + (photo != null ? photo.hashCode() : 0);
     return result;
   }
 
-  public ContactData inGroup(GroupData group) {
-    groups.add(group);
-    return this;
-  }
+
 
 }

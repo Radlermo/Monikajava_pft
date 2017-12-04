@@ -1,32 +1,38 @@
 <list>
-  <pl.stqa.pft.addressbook.model.ContactData>
-    <id>2147483647</id>
+  <contact>
     <firstname>fistname 0</firstname>
     <lastname>lastname 0</lastname>
     <address>address 0</address>
     <telephonehome>telephonehome 0</telephonehome>
     <email>email 0</email>
-    <group>test 0</group>
+    <groups/>
     <photo>src\test\resources\scrum.jpg</photo>
-  </pl.stqa.pft.addressbook.model.ContactData>
-  <pl.stqa.pft.addressbook.model.ContactData>
-    <id>2147483647</id>
+  </contact>
+  <contact>
     <firstname>fistname 1</firstname>
     <lastname>lastname 1</lastname>
     <address>address 1</address>
     <telephonehome>telephonehome 1</telephonehome>
     <email>email 1</email>
-    <group>test 1</group>
+    <groups/>
     <photo>src\test\resources\scrum.jpg</photo>
-  </pl.stqa.pft.addressbook.model.ContactData>
-  <pl.stqa.pft.addressbook.model.ContactData>
-    <id>2147483647</id>
+  </contact>
+  <contact>
     <firstname>fistname 2</firstname>
     <lastname>lastname 2</lastname>
     <address>address 2</address>
     <telephonehome>telephonehome 2</telephonehome>
     <email>email 2</email>
-    <group>test 2</group>
+    <groups/>
     <photo>src\test\resources\scrum.jpg</photo>
-  </pl.stqa.pft.addressbook.model.ContactData>
+  </contact>
+  <contact>
+    <firstname>fistname 3</firstname>
+    <lastname>lastname 3</lastname>
+    <address>address 3</address>
+    <telephonehome>telephonehome 3</telephonehome>
+    <email>email 3</email>
+    <groups/>
+    <photo>src\test\resources\scrum.jpg</photo>
+  </contact>
 </list>

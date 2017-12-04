@@ -44,21 +44,21 @@ public class ContactCreationTest extends TestBase {
 
     @Test(dataProvider = "validContacts")
     public void testContactCreation(ContactData contact) {
-      Groups groups = app.db().groups();
+      //Groups groups = app.db().groups();
       app.goTo().goToHomePage();
       File photo = new File("src/test/resources/scrum.jpg");
       Contacts before = app.db().contacts();
      /*ContactData newContact = new ContactData().withFirstname("Monika6").withLastname("Radler8").withAddress("testowa6").withTelephonehome("754589697").withEmail("7wst@test.pl")
               .withPhoto(photo).inGroup(groups.iterator().next());//.withGroup("test2")*/
-     // GroupData groups = new GroupData().withName("test1");
-       //GroupData groups = app.db().groups().iterator().next();
-      app.contact().create(contact.withPhoto(photo).inGroup(groups.iterator().next()), true);
-      app.contact().create(contact, true);
+
+       GroupData groups = app.db().groups().iterator().next();
+      app.contact().create(contact.withPhoto(photo).inGroup(groups)), true);
+      //app.contact().create(contact, true);
       app.goTo().goToHomePage();
       //
       Contacts after = app.db().contacts();
       assertThat(after.size(), equalTo(before.size() + 1));
-      assertThat(after, equalTo(before.withAdded(contact.withId(after.stream().mapToInt(c -> c.getId()).max().getAsInt()))));
+      assertThat(after, equalTo(before.withAdded(contact.withId(after.stream().mapToInt(g -> g.getId()).max().getAsInt()))));
       VerifyContactListInUi();
       /*Assert.assertEquals(new HashSet<Object>(before) , new HashSet<Object>(after));*/
     }
