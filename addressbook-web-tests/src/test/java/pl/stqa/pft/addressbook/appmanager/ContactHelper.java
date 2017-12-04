@@ -55,9 +55,10 @@ public class ContactHelper extends HelperBase{
     wd.findElement(locator).clear();
     wd.findElement(locator).sendKeys(text);
   }
-
+//submit conatccreation
   public void goToHomePage() {
     click(By.xpath("//div[@id='content']/form/input[21]"));
+    click(By.id("content"));
     /*click(By.linkText("home page")); */
 
   }
@@ -157,9 +158,6 @@ public class ContactHelper extends HelperBase{
        initDeleteContact();
     }
 
-
-
-
     public boolean isThereAContact() {
     return isElementPresent(By.name("selected[]"));
   }
@@ -205,8 +203,8 @@ public class ContactHelper extends HelperBase{
      String email3 = wd.findElement(By.name("email3")).getAttribute("value");
      String address = wd.findElement(By.name("address")).getAttribute("value");
      wd.navigate().back();
-     return new ContactData().withId(contact.getId()).withFirstname(firstname).withLastname(lastname).withTelephonehome(telephonehome).withMobilePhone(mobile).withWorkPhone(work)
-             .withEmail(email).withEmail2(email2).withEmail3(email3).withAddress(address);
+     return new ContactData().withId(contact.getId()).withFirstname(firstname).withLastname(lastname).withTelephonehome(telephonehome).withMobilePhone(mobile)
+             .withWorkPhone(work).withEmail(email).withEmail2(email2).withEmail3(email3).withAddress(address);
  }
 
 

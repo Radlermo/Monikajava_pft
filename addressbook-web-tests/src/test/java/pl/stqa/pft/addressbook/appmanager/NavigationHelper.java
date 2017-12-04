@@ -25,4 +25,13 @@ public class NavigationHelper extends HelperBase {
         //click(By.xpath("//div[@id='content']/form/input[21]"));
         wd.findElement(By.linkText("home")).click();
             }
+
+    public void addNew() { //sprawdż czy na stronie kontaktów istnieje grupa, jeśli tak utwórz kontact
+        if (isElementPresent(By.tagName("h1"))
+                && wd.findElement(By.tagName("h1")).getText().equals("Edit / add address book entry")
+                && (isElementPresent(By.name("new_group")))) {
+            return;
+        }
+        click(By.linkText("add new"));
+    }
 }

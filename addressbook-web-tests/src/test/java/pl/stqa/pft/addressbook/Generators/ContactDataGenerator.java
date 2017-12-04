@@ -63,7 +63,7 @@ public class ContactDataGenerator {
         Writer writer = new FileWriter(file); //otwieramy plik do zapisu
         for (ContactData contact : contacts) {//przechodzimy w pętli po wszytskich grupach które znajdują się na liście groups
             writer.write(String.format("%s;%s;%s\n", contact.getFirstname(), contact.getLastname(), contact.getAddress()
-                    , contact.getTelephonehome(), contact.getEmail(), contact.getPhoto(),contact.getGroups()));//zapisanie pliku
+                    , contact.getTelephonehome(), contact.getEmail(), contact.getPhoto()));//zapisanie pliku
             // contact.getGroup(),
         }
         writer.close();
