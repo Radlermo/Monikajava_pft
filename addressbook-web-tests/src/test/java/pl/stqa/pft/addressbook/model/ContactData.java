@@ -63,16 +63,8 @@ public class ContactData {
   @Expose
   private String email3;
 
-
-
   @Transient
   private String allEmails;
-
-  @ManyToMany(fetch = FetchType.EAGER)//eager - chciwy, dzięki temu wyciągamy więcej informacji z bazy danych za jednym razem
-  @JoinTable(name = "address_in_groups",//tabela która wykorzystywana jest dla związku pomiędzy grupami a kontaktami
-          joinColumns = @JoinColumn(name = "id"), inverseJoinColumns = @JoinColumn(name = "group_id"))//id - id kontaktu, group_id - id grupy
-  public Set<GroupData> groups = new HashSet<GroupData>();
-
 
   @Transient //@Transient żeby pole było pominięte i nie wyciągane z bazy danych
   private String allPhones;
@@ -84,6 +76,11 @@ public class ContactData {
   @Type(type = "text")
   @Expose
   private String photo;
+
+  @ManyToMany(fetch = FetchType.EAGER)//eager - chciwy, dzięki temu wyciągamy więcej informacji z bazy danych za jednym razem
+  @JoinTable(name = "address_in_groups",//tabela która wykorzystywana jest dla związku pomiędzy grupami a kontaktami
+          joinColumns = @JoinColumn(name = "id"), inverseJoinColumns = @JoinColumn(name = "group_id"))//id - id kontaktu, group_id - id grupy
+  public Set<GroupData> groups = new HashSet<GroupData>();
 
   public File getPhoto() {
     return new File(photo);
@@ -213,7 +210,11 @@ public class ContactData {
             ", lastname='" + lastname + '\'' +
             ", address='" + address + '\'' +
             ", telephonehome='" + telephonehome + '\'' +
+            ", mobile='" + mobile + '\'' +
+            ", work='" + work + '\'' +
             ", email='" + email + '\'' +
+            ", email2='" + email2 + '\'' +
+            ", email3='" + email3 + '\'' +
             '}';
   }
 
@@ -231,9 +232,9 @@ public class ContactData {
     if (telephonehome != null ? !telephonehome.equals(that.telephonehome) : that.telephonehome != null) return false;
     if (mobile != null ? !mobile.equals(that.mobile) : that.mobile != null) return false;
     if (work != null ? !work.equals(that.work) : that.work != null) return false;
-    if (allEmails != null ? !allEmails.equals(that.allEmails) : that.allEmails != null) return false;
-    if (allPhones != null ? !allPhones.equals(that.allPhones) : that.allPhones != null) return false;
-    return photo != null ? photo.equals(that.photo) : that.photo == null;
+    if (email != null ? !email.equals(that.email) : that.email != null) return false;
+    if (email2 != null ? !email2.equals(that.email2) : that.email2 != null) return false;
+    return email3 != null ? email3.equals(that.email3) : that.email3 == null;
   }
 
   @Override
@@ -245,12 +246,9 @@ public class ContactData {
     result = 31 * result + (telephonehome != null ? telephonehome.hashCode() : 0);
     result = 31 * result + (mobile != null ? mobile.hashCode() : 0);
     result = 31 * result + (work != null ? work.hashCode() : 0);
-    result = 31 * result + (allEmails != null ? allEmails.hashCode() : 0);
-    result = 31 * result + (allPhones != null ? allPhones.hashCode() : 0);
-    result = 31 * result + (photo != null ? photo.hashCode() : 0);
+    result = 31 * result + (email != null ? email.hashCode() : 0);
+    result = 31 * result + (email2 != null ? email2.hashCode() : 0);
+    result = 31 * result + (email3 != null ? email3.hashCode() : 0);
     return result;
   }
-
-
-
 }

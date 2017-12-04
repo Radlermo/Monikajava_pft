@@ -5,6 +5,7 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import pl.stqa.pft.addressbook.model.ContactData;
 import pl.stqa.pft.addressbook.model.Contacts;
+import pl.stqa.pft.addressbook.model.GroupData;
 import pl.stqa.pft.addressbook.model.Groups;
 
 import java.io.File;
@@ -19,7 +20,7 @@ public class ContactModification extends TestBase {
     File photo = new File("src/test/resources/scrum.jpg");
     if (app.db().contacts().size() == 0){
       app.goTo().goToHomePage();
-      app.contact().create(new ContactData().withFirstname("Monika6").withLastname("Radler8").withAddress("testowa4").withTelephonehome("754589697").withEmail("7wst@test.pl"),true);
+      app.contact().create(new ContactData().withFirstname("Monika6").withLastname("Radler8").withAddress("testowa4").withTelephonehome("754589697").withEmail("7wst@test.pl"));
     //.withGroup("test2")
     }
   }
@@ -34,9 +35,9 @@ public class ContactModification extends TestBase {
     ContactData contact = new ContactData().withId(modifiedContact.getId()).withFirstname("Monika12").withLastname("Radler12").withAddress("testowa4")
             .withTelephonehome("754589697").withEmail("7wst@test.pl").withPhoto(photo);
             //.withGroup("test2")
-    app.goTo().goToHomePage();
+   // app.goTo().goToHomePage();
     app.contact().modify(contact);
-    //app.goTo().goToHomePage();
+    app.goTo().goToHomePage();
     Contacts after = app.db().contacts();
     assertEquals(after.size(), before.size());
     assertThat(after, equalTo(before.without(modifiedContact).withAdded(contact)));

@@ -33,24 +33,13 @@ public class GroupData {
   private String footer;
 
 
-
-
   @ManyToMany(fetch = FetchType.EAGER, mappedBy = "groups")
   private Set<ContactData> contacts = new HashSet<ContactData>();
 
-
-
-  public Contacts getContacts() {
-    return new Contacts(contacts);
-  }
-
   public int getId() { return id; }
-
-
 
   public GroupData withId(int id) {
     this.id = id;
-
     return this;
   }
 
@@ -81,6 +70,10 @@ public class GroupData {
     return footer;
   }
 
+  public Contacts getContacts() {return new Contacts(contacts);
+  }
+
+
   @Override
   public boolean equals(Object o) {
     if (this == o) return true;
@@ -99,6 +92,8 @@ public class GroupData {
     return "GroupData{" +
             "id=" + id +
             ", name='" + name + '\'' +
+            ", header='" + header + '\'' +
+            ", footer='" + footer + '\'' +
             '}';
   }
 

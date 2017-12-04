@@ -8,6 +8,7 @@ import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 import pl.stqa.pft.addressbook.model.ContactData;
 import pl.stqa.pft.addressbook.model.Contacts;
+import pl.stqa.pft.addressbook.model.GroupData;
 
 import java.util.HashSet;
 import java.util.List;
@@ -102,7 +103,8 @@ public class ContactHelper extends HelperBase{
     wd.switchTo().alert().accept();
   }
 
-  public void create(ContactData contact, boolean creation) {
+  public void create(ContactData contact)//, boolean creation)
+    {
     goToContactCreation();
     fillContactForm(contact, true);
     contactCache = null;
@@ -129,7 +131,36 @@ public class ContactHelper extends HelperBase{
       contactCache = null;
   }
 
-  public boolean isThereAContact() {
+    public void choosingGroupToAdd(GroupData group) {
+      new Select(wd.findElement(By.cssSelector("select[name='to_group']"))).selectByVisibleText(group.getName());
+    }
+
+    public void choosingGroupToDelete(GroupData group) {
+        new Select(wd.findElement(By.name("group"))).selectByVisibleText(group.getName());
+    }
+
+    public void initAddContact() {
+      wd.findElement(By.name("add")).click();
+    }
+    public void initDeleteContact() {
+        wd.findElement(By.name("remove")).click();
+    }
+
+    public void addContactToGroup(ContactData contact, GroupData associateGroup){
+      selectContactById(contact.getId());
+      choosingGroupToAdd(associateGroup);
+      initAddContact();
+    }
+    public void deleteContactfromGroup(GroupData groupdata, ContactData contactData){
+       choosingGroupToDelete(groupdata);
+       selectContactById(contactData.getId());
+       initDeleteContact();
+    }
+
+
+
+
+    public boolean isThereAContact() {
     return isElementPresent(By.name("selected[]"));
   }
 

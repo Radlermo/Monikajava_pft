@@ -36,6 +36,18 @@ public class DbHelper {
                return new Groups(result);
            }
 
+    public GroupData groups(int id) {
+        Session session = sessionFactory.openSession();
+        session.beginTransaction();
+        String request = "from GroupData where group_id = " + id;
+        System.out.println(request);
+        List<GroupData> resultGroup = session.createQuery(request).list();
+        GroupData result =  resultGroup.iterator().next();
+        session.getTransaction().commit();
+        session.close();
+        return result;
+    }
+
            public Contacts contacts() {
                Session session = sessionFactory.openSession();
                session.beginTransaction();
@@ -47,5 +59,16 @@ public class DbHelper {
                session.close();
                return new Contacts(result);
            }
+
+    public ContactData contacts(int id) {
+        Session session = sessionFactory.openSession();
+        session.beginTransaction();
+        String request = "from ContactData where id = " + id;
+        List<ContactData> resultContact = session.createQuery(request).list();
+        ContactData result =  resultContact.iterator().next();
+        session.getTransaction().commit();
+        session.close();
+        return result;
+    }
 
 }

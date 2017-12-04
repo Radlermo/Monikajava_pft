@@ -18,7 +18,7 @@ public class ContactDeletionTest extends TestBase {
     File photo = new File("src/test/resources/scrum.jpg");
     if (app.db().contacts().size() == 0){
       app.contact().create(new ContactData().withFirstname("Monika1").withLastname("Radler1").withAddress("testowa4").withTelephonehome("654589698")
-              .withEmail("twst@test.pl").withPhoto(photo), true);
+              .withEmail("twst@test.pl").withPhoto(photo));
        //.withGroup("test1")
     }
   }
