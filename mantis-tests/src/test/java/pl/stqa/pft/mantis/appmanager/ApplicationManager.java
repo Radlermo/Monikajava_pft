@@ -45,5 +45,12 @@ public class ApplicationManager {
     wd.quit();
   }
 
+  //inicjalizacja protokołu
+  public HttpSession newSession() {
+        return new HttpSession(this);
+    }
 
+    public String getProperty(String key) {
+       return properties.getProperty(key);
+    }
 }
