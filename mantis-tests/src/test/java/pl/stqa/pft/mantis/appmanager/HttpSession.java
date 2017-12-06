@@ -35,6 +35,8 @@ public boolean login(String username, String password) throws IOException {
     CloseableHttpResponse response = httpClient.execute(post);
     String body = getTextFrom(response); //zalogowanie do strony
     return body.contains(String.format("<span class=\"italic\">%s</span>", username));//linia "użytkownik zalogowany jako
+
+
 }
 
 private String getTextFrom(CloseableHttpResponse response) throws IOException {
