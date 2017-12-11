@@ -29,7 +29,7 @@ public class MailHelper {
                     return wiser.getMessages().stream().map((m) -> toModelMail(m)).collect(Collectors.toList());//przekształcanie objektów rzezczywistych w modelowe
                 }
                 try {
-                    Thread.sleep(1000);// czekamy 1000 milisekund
+                    Thread.sleep(10000);// czekamy 1000 milisekund
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
