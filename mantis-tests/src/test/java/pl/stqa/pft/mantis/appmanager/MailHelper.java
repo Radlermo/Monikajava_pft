@@ -19,17 +19,17 @@ public class MailHelper {
 
         public MailHelper(ApplicationManager app) {
             this.app = app;
-            wiser = new Wiser();
+            wiser = new Wiser(); //powstaje objekt typu wiser czyli serwer pocztowy
         }
 
         public List<MailMessage> waitForMail (int count, long timeout) throws MessagingException, IOException, InterruptedException {
-            long start = System.currentTimeMillis();
-            while (System.currentTimeMillis() < start + timeout) {
+            long start = System.currentTimeMillis(); //zapamiętujemy bieżacy czas
+            while (System.currentTimeMillis() < start + timeout) { //sprawdzamy czy czas oczekiwania jeszcze nie upłynął
                 if (wiser.getMessages().size() >= count) {
-                    return wiser.getMessages().stream().map((m) -> toModelMail(m)).collect(Collectors.toList());
+                    return wiser.getMessages().stream().map((m) -> toModelMail(m)).collect(Collectors.toList());//przekształcanie objektów rzezczywistych w modelowe
                 }
                 try {
-                    Thread.sleep(1000);
+                    Thread.sleep(1000);// czekamy 1000 milisekund
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
@@ -41,7 +41,7 @@ public class MailHelper {
         public static MailMessage toModelMail(WiserMessage m) {
             try {
                 MimeMessage mm = m.getMimeMessage();
-                return new MailMessage(mm.getAllRecipients()[0].toString(), (String) mm.getContent());
+                return new MailMessage(mm.getAllRecipients()[0].toString(), (String) mm.getContent());//lista rzeczywistych wiadomości/ lista odbiorców/ wybierz jednego/ content = treść
             } catch (MessagingException e) {
                 e.printStackTrace();
                 return null;
